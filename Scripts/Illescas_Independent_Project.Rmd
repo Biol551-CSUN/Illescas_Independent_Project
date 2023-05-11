@@ -1,0 +1,370 @@
+---
+title: "The Effects of Phytocannabinoids in Paraquat Induced Damage to *Drosophila melanogaster* Midgut"
+subtitle: 
+author: "Sandy Illescas"
+institute: "Loza-Coll Lab @ California State University, Northridge"
+date: "2023/05/01"
+output:      
+    xaringan::moon_reader:
+      css: [default, rladies, rladies-fonts]
+      lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.path = "../Output/",
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+class: center, middle
+
+# Presentation Roadmap
+
+--
+
+-Phytocannabinoids
+
+--
+
+-Endocannabinoid System
+
+--
+  
+-Model Organism
+
+--
+
+-Methods & Data Collection
+
+--
+  
+-Data Visualization
+
+--
+
+-**βrιεf rευιεω οf μγ ςοδε**(just kidding)
+
+--
+
+### Psst! 
+###### (Did you know that your script can translate the Greek Keyboard?)
+
+---
+
+class: center, middle
+
+# **Phytocannabinoids**
+### *Cannabis Sativa* plants produce **glandular trichomes** which contain disk cells that release secretions into a cavity, where secondary metabolites, such as cannabinoids, are deposited and stored.
+
+##### (Just like essential oils!)
+
+.center[
+![Trichomes](https://www.frontiersin.org/files/Articles/721986/fpls-12-721986-HTML/image_m/fpls-12-721986-g001.jpg)
+
+]
+
+.right[Tanney et al (2021)]]
+
+---
+
+class: center, middle
+
+# *Cannabis  sativa* 
+### 100+ Phytocannabinoids!
+
+.right[
+<img src="https://pubs.acs.org/cms/10.1021/acs.jnatprod.0c00965/asset/images/medium/np0c00965_0013.gif" width="90%"/>
+
+]
+
+??? 
+
+This is pretty cool!  See you later, alligator!
+
+---
+
+class: center, middle
+
+# How Phytocannabinoids Function
+.center[
+![Synapse](https://essentiapura.com/wp-content/uploads/2021/05/endoneuron-900x491.jpg)
+
+]
+
+---
+
+class: center, middle
+
+# **Endocannabinoids**
+
+<img src="https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2Fs41401-018-0075-x/MediaObjects/41401_2018_75_Fig1_HTML.png" width="70%"/>
+
+---
+
+class: center, middle
+
+# **The Endocannabinoid System**
+
+### Research has mainly focused on:
+
+### CB1 and CB2 Receptors
+--
+
+### **WHY??**
+
+
+---
+
+class: center, middle
+
+# Receptors are EVERYWHERE!
+<img src="https://wholisticmatters.com/wp-content/uploads/2020/07/ECS.png" width="90%"/>
+
+
+
+---
+
+```{r, echo=FALSE}
+## When you want to control the size of the photo you are using, this is a really fast way to do that!
+```
+
+class: center, middle
+
+# Model Organism
+
+### Why *_Drosophila melanogaster_*?
+
+<img src="https://i1.wp.com/depts.washington.edu/cberglab/wordpress/wp-content/uploads/2015/04/Lifecycle-of-Drosophila.jpg?w=500&ssl=1" width="58%"/>
+
+---
+
+class: center, top
+
+# CBD Receptors!
+
+<img src="https://bpspubs.onlinelibrary.wiley.com/cms/asset/a03c6c44-1e64-4012-87d4-194f32a08ed8/prp2682-fig-0001-m.jpg" width="80%"/>
+##### .right[Almeida, Devi (2020)]
+
+
+---
+
+class: center, middle
+
+# Why the Midgut?
+
+<img src="https://media.springernature.com/lw685/springer-static/image/chp%3A10.1007%2F978-1-0716-2035-9_20/MediaObjects/489042_1_En_20_Fig1_HTML.png" width="50%"/>
+
+---
+
+class: center, middle
+
+# **Methods**
+
+### Exposure 100% Cannabis Oil (Broad Spectrum)
+
+<img src="libs\Images\Exposure.JPG" width="55%"/>
+
+---
+class: center, middle
+
+## Paraquat (PQ) Exposure
+
+<img src="libs\Images\Poison.png" width="100%"/>
+
+---
+class: center, middle
+
+## Paraquat (PQ) Exposure
+-Incubate during 12 hour PQ exposure
+
+--
+
+-Exchange PQ for respective diets
+
+--
+
+-Incubate for 36 hours
+
+--
+
+-Prepare for dissection
+
+---
+class: center, middle
+
+## Dissection Takes Place 48 Hours after PQ Exposure
+
+<img src="libs\Images\Dissection.png" width="100%"/>
+
+---
+class: center, middle
+
+# Data Collection
+
+.pull-left[-Fixative]
+
+--
+
+.pull-right[-Immunohistochemistry]
+
+--
+
+.pull-left[-Mount]
+
+--
+
+.pull-right[-Image Analysis]
+
+---
+
+class: center, middle
+
+## Start Counting!
+
+.pull_left[-Manually count all cell types]
+
+--
+
+.pull_right[-Record results]
+
+<img src="libs\Images\Microscopy.png" width="100%"/>
+
+---
+# .center[**Data Visualization**]
+
+## Load Libraries
+```{r}
+
+library(tidyverse)
+library(readr)
+library(here)
+library(dplyr)
+library(ggplot2)
+library(RColorBrewer)
+library(plotly)
+
+```
+
+## Load Data
+
+```{r}
+
+Phyto_Data <- read.csv(here("Data/Phyto_Data.csv"))
+
+```
+
+---
+
+## .center[Dataset Goals]
+
+--
+
+.center[-Compare survival among groups]
+
+--
+
+.center[-Compare both groups in each experiment]
+
+
+--
+
+.center[-Compare cell mean count for all cell types]
+
+---
+
+# Glimpsing at the Dataset
+
+```{r}
+    
+glimpse(Phyto_Data)
+
+
+```
+---
+
+class: center, middle
+
+# Data Visualization 
+
+```{r, include=FALSE}
+
+p1 <- ggplot(Phyto_Data, aes(x = exp_nmbr, 
+                             y = n_final, 
+                             fill = group), stat="Identity", fill=factor(Group)) +
+  geom_bar(stat="Identity", position="dodge") +
+  labs(x = "Experiment Number",
+        y = "Drosophila Survivors",
+        title = "Survival Among Groups",
+        legend = "Groups") +
+  scale_x_continuous(breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
+
+p1
+
+ggsave(here("Output","Survival.png"))
+
+
+```
+<img src="libs\Images\Survival.png" width="69%"/>
+
+---
+
+class: center, middle
+
+```{r, include=FALSE}
+
+p2 <- Phyto_Data %>%
+  group_by(group) %>%
+  ggplot() +
+  labs(title = "Seeing the Magic",
+       x = "Cell Type",
+       y = "Cell Count") + 
+   geom_col(aes(x = reorder(cell_type, cell_count), y = cell_count, 
+               fill = group), stat = "identity", show.legend = TRUE)
+
+p2
+
+ggsave(here("Output","Magic.png"))
+
+```
+<img src="libs\Images\Magic.png" width="100%"/>
+
+---
+
+```{r, include=FALSE}
+
+p4 <- ggplot(Phyto_Data, aes(cell_type, cell_count)) + # ggplot2 barplot with mean
+  geom_bar(position = "dodge",
+           stat = "identity",
+           fun = "mean",
+           show.legend = TRUE)+
+facet_wrap("group", strip.position = "bottom")+
+  
+  theme(strip.placement = "outside")+
+  labs(title= "Mean of Cell Types", x = "Cell Type", y = "Average Number of Cells")
+
+
+p4 
+
+ggsave(here("Output","Mean_Cells.png"))
+
+```
+
+class: center, middle
+
+<img src="libs\Images\Mean_Cells.png" width="75%"/>
+
+---
+
+class: center, middle
+
+# Thank You for your time
+
+
+### Questions?

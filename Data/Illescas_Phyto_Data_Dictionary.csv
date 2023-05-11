@@ -1,0 +1,7 @@
+name,plot_name,group,description
+Experiment,exp_nmbr,N/A,Experiment number (Replicates)
+Group,group,Control/CBD,Describes if it is a control sample or a treatment sample
+Initial Sample Size,n_start,N/A,Sample size of each group (n) at start of experiment
+Final Sample Size,n_final,N/A,Sample size of each group (n) at end of experiment
+Cell  Type,cell_type,ISC/EC/EE,"Type of cell being counted. ISC= intestinal stem cell, EC= enterocyte, EE= enteroendocrine cell"
+Cell Count,cell_count,N/A,Number of total cells found in experimental group collectively
