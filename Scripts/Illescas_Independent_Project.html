@@ -63,19 +63,30 @@ class: center, middle
 ### Psst! 
 ###### (Did you know that your script can translate the Greek Keyboard?)
 
+
+
 ---
 
 class: center, middle
+
+
+
 
 # **Phytocannabinoids**
 ### *Cannabis Sativa* plants produce **glandular trichomes** which contain disk cells that release secretions into a cavity, where secondary metabolites, such as cannabinoids, are deposited and stored.
 
 ##### (Just like essential oils!)
 
+
+
+
 .center[
 ![Trichomes](https://www.frontiersin.org/files/Articles/721986/fpls-12-721986-HTML/image_m/fpls-12-721986-g001.jpg)
 
 ]
+
+
+
 
 .right[Tanney et al (2021)]]
 
@@ -94,6 +105,9 @@ class: center, middle
 ??? 
 
 This is pretty cool!  See you later, alligator!
+
+
+
 
 ---
 
@@ -126,7 +140,6 @@ class: center, middle
 
 ### **WHY??**
 
-
 ---
 
 class: center, middle
@@ -151,6 +164,8 @@ class: center, middle
 ---
 
 class: center, top
+
+
 
 # CBD Receptors!
 
@@ -213,6 +228,9 @@ class: center, middle
 
 # Data Collection
 
+
+
+
 .pull-left[-Fixative]
 
 --
@@ -254,13 +272,15 @@ library(dplyr)
 library(ggplot2)
 library(RColorBrewer)
 library(plotly)
+
+#Loads all the libraries used in this code
 ```
 
 ## Load Data
 
 
 ```r
-Phyto_Data &lt;- read.csv(here("Data/Phyto_Data.csv"))
+Phyto_Data &lt;- read.csv(here("Data/Phyto_Data.csv")) #this is the data that I made specifically for this project
 ```
 
 ---
@@ -286,7 +306,7 @@ Phyto_Data &lt;- read.csv(here("Data/Phyto_Data.csv"))
 
 
 ```r
-glimpse(Phyto_Data)
+glimpse(Phyto_Data) # this allows us to "glimpse" at our data
 ```
 
 ```

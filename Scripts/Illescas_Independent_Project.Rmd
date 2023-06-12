@@ -56,19 +56,39 @@ class: center, middle
 ### Psst! 
 ###### (Did you know that your script can translate the Greek Keyboard?)
 
+
+```{r, echo=FALSE}
+#Three --- dashes creates a new slide, while two -- dashes continues to add to your current slide
+```
 ---
 
 class: center, middle
+
+
+```{r, echo=FALSE}
+# (class: center, middle) allows us to center anything from text to photos, I happen to like the uniformity of having things centered. Below we are calling an image which has been taken directly from the internet.  Making sure to find a quality .png or .jpeg is important so picture does not appear blurry.
+
+```
 
 # **Phytocannabinoids**
 ### *Cannabis Sativa* plants produce **glandular trichomes** which contain disk cells that release secretions into a cavity, where secondary metabolites, such as cannabinoids, are deposited and stored.
 
 ##### (Just like essential oils!)
 
+
+```{r, echo=FALSE}
+# the number of hashtags "###" allows us to assing the size of font we want to see, the less hashtags, the larger the font!
+```
+
 .center[
 ![Trichomes](https://www.frontiersin.org/files/Articles/721986/fpls-12-721986-HTML/image_m/fpls-12-721986-g001.jpg)
 
 ]
+
+
+```{r, echo=FALSE}
+# the ".center" before the photo above and the ".right" before the text below allows us to designate where on the page the item will appear.
+```
 
 .right[Tanney et al (2021)]]
 
@@ -87,6 +107,12 @@ class: center, middle
 ??? 
 
 This is pretty cool!  See you later, alligator!
+
+
+```{r, echo=FALSE}
+# the three question marks "???" allows you to enter presenter notes.  On your slides you will not see the details you have written after, but you do see the "???" which can remind you to look at your notes if there are important things you wanted to mention.
+
+```
 
 ---
 
@@ -119,7 +145,6 @@ class: center, middle
 
 ### **WHY??**
 
-
 ---
 
 class: center, middle
@@ -132,7 +157,7 @@ class: center, middle
 ---
 
 ```{r, echo=FALSE}
-## When you want to control the size of the photo you are using, this is a really fast way to do that!
+## When you want to control the size of the photo you are using, the above is the fastest way to do that!
 ```
 
 class: center, middle
@@ -146,6 +171,10 @@ class: center, middle
 ---
 
 class: center, top
+
+```{r, echo=FALSE}
+## (class: center, top) allows us to not only center our text or photo, but to place it at the top, instead at the middle of the page
+```
 
 # CBD Receptors!
 
@@ -208,6 +237,11 @@ class: center, middle
 
 # Data Collection
 
+
+
+```{r, echo=FALSE}
+# "pulling" data as seen below allows us to designate what side your text will go if you want to produce columns in your presentation.  
+```
 .pull-left[-Fixative]
 
 --
@@ -250,13 +284,15 @@ library(ggplot2)
 library(RColorBrewer)
 library(plotly)
 
+#Loads all the libraries used in this code
+
 ```
 
 ## Load Data
 
 ```{r}
 
-Phyto_Data <- read.csv(here("Data/Phyto_Data.csv"))
+Phyto_Data <- read.csv(here("Data/Phyto_Data.csv")) #this is the data that I made specifically for this project
 
 ```
 
@@ -283,8 +319,7 @@ Phyto_Data <- read.csv(here("Data/Phyto_Data.csv"))
 
 ```{r}
     
-glimpse(Phyto_Data)
-
+glimpse(Phyto_Data) # this allows us to "glimpse" at our data
 
 ```
 ---
@@ -295,19 +330,20 @@ class: center, middle
 
 ```{r, include=FALSE}
 
-p1 <- ggplot(Phyto_Data, aes(x = exp_nmbr, 
+p1 <- ggplot(Phyto_Data, aes(x = exp_nmbr, # Here we are making a plot and we get to designate what data will be represented in both the x-axis and y-axis
                              y = n_final, 
-                             fill = group), stat="Identity", fill=factor(Group)) +
-  geom_bar(stat="Identity", position="dodge") +
-  labs(x = "Experiment Number",
+                             fill = group), # this allows us to fill color by group
+             stat="Identity", fill=factor(Group)) +
+  geom_bar(stat="Identity", position="dodge") + # this allows us to pick the type of graph we want, position "dodge" assures that there will be no overlapping
+  labs(x = "Experiment Number", # this allows us to label our graph to make sure data is presented well
         y = "Drosophila Survivors",
         title = "Survival Among Groups",
         legend = "Groups") +
-  scale_x_continuous(breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
+  scale_x_continuous(breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)) # this allows us to make the x-axis continuous instead of only counting every two or five numbers
 
 p1
 
-ggsave(here("Output","Survival.png"))
+ggsave(here("Output","Survival.png")) # this allows us to save our graph to the specified location
 
 
 ```
@@ -319,18 +355,18 @@ class: center, middle
 
 ```{r, include=FALSE}
 
-p2 <- Phyto_Data %>%
-  group_by(group) %>%
-  ggplot() +
-  labs(title = "Seeing the Magic",
+p2 <- Phyto_Data %>% # this allows us to load our data or our next graph 
+  group_by(group) %>% # this allows us to designate how the information will be grouped
+  ggplot() + #this allows us to choose the type of graph we want to make
+  labs(title = "Seeing the Magic", # this allows us to label our graph to make sure data is presented well
        x = "Cell Type",
        y = "Cell Count") + 
-   geom_col(aes(x = reorder(cell_type, cell_count), y = cell_count, 
-               fill = group), stat = "identity", show.legend = TRUE)
+   geom_col(aes(x = reorder(cell_type, cell_count), y = cell_count,  # this allows us to choose a column graph, what our x and y axis should be
+               fill = group), stat = "identity", show.legend = TRUE) # this allows us to designate the column that will be used to pull data from or "value" from and allows us to show the legend in our graph
 
 p2
 
-ggsave(here("Output","Magic.png"))
+ggsave(here("Output","Magic.png")) # this allows us to save our graph to the specified location
 
 ```
 <img src="libs\Images\Magic.png" width="100%"/>
@@ -340,19 +376,19 @@ ggsave(here("Output","Magic.png"))
 ```{r, include=FALSE}
 
 p4 <- ggplot(Phyto_Data, aes(cell_type, cell_count)) + # ggplot2 barplot with mean
-  geom_bar(position = "dodge",
-           stat = "identity",
+  geom_bar(position = "dodge",  # this allows us to make sure our graph values do not overlap and "dodge" each other instead 
+           stat = "identity", # this allows us to designate the column that will be used to pull data from or "values" from
            fun = "mean",
-           show.legend = TRUE)+
-facet_wrap("group", strip.position = "bottom")+
+           show.legend = TRUE)+ # this allows us to show the legend in our graph
+facet_wrap("group", strip.position = "bottom")+ # this allows us to see more than one graph on one page as a facet wrap and designate the informational "strip" at the bottom
   
-  theme(strip.placement = "outside")+
-  labs(title= "Mean of Cell Types", x = "Cell Type", y = "Average Number of Cells")
+  theme(strip.placement = "outside")+ # this places the above strip "outside" of the graph
+  labs(title= "Mean of Cell Types", x = "Cell Type", y = "Average Number of Cells") #this allows us to label our axis and titles appropriately 
 
 
 p4 
 
-ggsave(here("Output","Mean_Cells.png"))
+ggsave(here("Output","Mean_Cells.png")) # this allows us to save our graph to the specified location
 
 ```
 
